@@ -1,0 +1,71 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+
+
+
+    <div class="table-responsive">
+    <table id="example" class="table table-bordered nomargin">
+        <thead>
+            <tr>
+
+                <th>Refpromotion</th>
+                <th>Tauxpromotion</th>
+                <th>Typepromotion</th>
+                <th>Date debut de promotion</th>
+                <th>Date fin de promotion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for promotion in promotions %}
+            <tr>
+                <td>{{ promotion.refPromotion }}</td>
+                <td>{{ promotion.tauxPromotion }}</td>
+                <td>{{ promotion.typePromotion }}</td>
+                <td>{{ promotion.dateDebut |date('Y-m-d H:i:s') }}</td>
+                <td>{{ promotion.dateFin |date('Y-m-d H:i:s') }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('promotion_show', { 'id': promotion.id }) }}"><i class="fa fa-trash"></i>Supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('promotion_edit', { 'id': promotion.id }) }}"><i class="fa fa-pencil"></i>Editer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('promotion_new') }}" class="btn btn-success">Create a new promotion</a>
+        </li>
+    </ul>
+    </div>
+
+    </div><!-- mainpanel -->
+{% endblock %}
+{% endblock %}
+
+
+
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+
+
+    $( "#promotion" ).toggleClass( "nav-parent active" )
+
+</script>

@@ -1,0 +1,199 @@
+{% include 'Header.html.twig' %}
+
+
+{% block body %}
+
+
+    <div class="body-content outer-top-xs" id="top-banner-and-menu">
+        <div class="container">
+            <div class="row">
+                <!-- ============================================== SIDEBAR ============================================== -->
+                <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+
+                    <!-- ================================== TOP NAVIGATION ================================== -->
+                    <div class="side-menu animate-dropdown outer-bottom-xs">
+                        <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+                        <nav class="yamm megamenu-horizontal" role="navigation">
+                            <ul class="nav">
+
+
+                                {% for modele in modeles %}
+
+
+                                    <li class="dropdown menu-item"><a href="{{ path('products', {'id': modele.id}) }}"
+                                                                      class="dropdown-toggle"
+                                                                      data-toggle="">{{ modele.libelleCategorie }} </a>
+                                    </li><!-- /.menu-item -->
+
+
+
+                                {% endfor %}
+
+                            </ul><!-- /.nav -->
+                        </nav><!-- /.megamenu-horizontal -->
+                    </div><!-- /.side-menu -->
+                    <!-- ================================== TOP NAVIGATION : END ================================== -->
+                    <!-- ============================================== SPECIAL OFFER ============================================== -->
+
+
+                    <!-- ============================================== SPECIAL OFFER : END ============================================== -->
+                    <!-- ============================================== PRODUCT TAGS ============================================== -->
+
+                    <!-- ============================================== COLOR: END ============================================== -->
+
+
+                </div><!-- /.sidemenu-holder -->
+                <!-- ============================================== SIDEBAR : END ============================================== -->
+
+                <!-- ============================================== CONTENT ============================================== -->
+                <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
+                    <!-- ========================================== SECTION – HERO ========================================= -->
+
+                    <div id="hero">
+                        <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+
+                            <div class="item" style="background-image: url({{ asset('assets/images/slide1.jpg') }}) ">
+                                <div class="container-fluid">
+                                    <div class="caption bg-color vertical-center text-left">
+
+
+                                    </div><!-- /.caption -->
+                                </div><!-- /.container-fluid -->
+                            </div><!-- /.item -->
+
+                            <div class="item" style="background-image: url({{ asset('assets/images/slide2.png') }})">
+                                <div class="container-fluid">
+                                    <div class="caption bg-color vertical-center text-left">
+
+
+                                    </div><!-- /.caption -->
+                                </div><!-- /.container-fluid -->
+                            </div><!-- /.item -->
+
+
+                        </div><!-- /.owl-carousel -->
+                    </div>
+
+                    <!-- ========================================= SECTION – HERO : END ========================================= -->
+
+
+                    <!-- ============================================== WIDE PRODUCTS : END ============================================== -->
+                    <!-- ============================================== FEATURED PRODUCTS ============================================== -->
+                    <section class="section featured-product wow fadeInUp">
+                        <h3 class="section-title">Nos Produits</h3>
+                        <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
+
+                            {% for product in products %}
+
+                                <div class="item item-carousel">
+                                    <div class="products">
+
+                                        <div class="product">
+                                            <div class="product-image">
+                                                <div class="image">
+                                                    <a href="{{ path('details_product', {'id': product.id}) }}"><img src="assets/images/blank.gif"
+                                                                    data-echo="{{ asset('images_produits/' ~ product.image  ~ '') }}"
+                                                                    style="height: 200px;width: 200px;box-shadow: 2px 2px 2px #222"
+                                                                    alt=""></a>
+                                                </div><!-- /.image -->
+
+
+                                            </div><!-- /.product-image -->
+
+
+                                            <div class="product-info text-left">
+                                                <h3 class="name"><a href="detail.html">{{ product.nom }}</a></h3>
+
+                                                <div class="description"></div>
+
+                                                <div class="product-price">
+				<span class="price">
+					{{ product.prix }} TND			</span>
+
+
+                                                </div><!-- /.product-price -->
+
+                                            </div><!-- /.product-info -->
+
+
+                                            <div class="cart clearfix animate-effect">
+                                                <div class="action">
+                                                    <ul class="list-unstyled">
+                                                        <li class="add-cart-button btn-group">
+                                                            <button class="btn btn-primary icon" data-toggle="dropdown"
+                                                                    type="button">
+                                                                <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                            <form action="https://www.paypal.com/cgi-bin/webscr"
+                                                                  method="post" id="cartButton">
+                                                                <fieldset>
+                                                                    <input type="hidden" name="cmd" value="_cart"/>
+                                                                    <input type="hidden" name="add" value="1"/>
+                                                                    <input type="hidden" name="business"
+                                                                           value="example@minicartjs.com"/>
+                                                                    <input type="hidden" name="item_name"
+                                                                           value="{{ product.id }}"/>
+                                                                    <input type="hidden" name="amount"
+                                                                           value="{{ product.prix }}"/>
+                                                                    <input type="hidden" name="discount_amount"
+                                                                           value="0.00"/>
+                                                                    <input type="hidden" name="currency_code"
+                                                                           value="TND"/>
+                                                                    <input type="hidden" name="return"
+                                                                           value="http://www.minicartjs.com/?success"/>
+                                                                    <input type="hidden" name="cancel_return"
+                                                                           value="http://www.minicartjs.com/?cancel"/>
+
+                                                                    <input type="submit" name="submit" value="Commander"
+                                                                           class="btn btn-primary"/>
+                                                                </fieldset>
+                                                            </form>
+
+
+                                                        </li>
+
+                                                        <li class="lnk wishlist">
+                                                            <a class="add-to-cart" href="detail.html" title="Wishlist">
+                                                                <i class="icon fa fa-heart"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="lnk">
+                                                            <a class="add-to-cart" href="detail.html" title="Compare">
+                                                                <i class="fa fa-retweet"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- /.action -->
+                                            </div><!-- /.cart -->
+                                        </div><!-- /.product -->
+
+                                    </div><!-- /.products -->
+                                </div><!-- /.item -->
+
+                            {% endfor %}
+
+                        </div><!-- /.home-owl-carousel -->
+                    </section><!-- /.section -->
+                    <div class="product-social-link m-t-20 text-right">
+                        <div class="social-icons">
+
+
+                            "{{ socialButtons() }}"
+
+
+                        </div>
+                    </div>
+                    <!-- ============================================== FEATURED PRODUCTS : END ============================================== -->
+
+                </div><!-- /.homebanner-holder -->
+                <!-- ============================================== CONTENT : END ============================================== -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /#top-banner-and-menu -->
+
+
+{% endblock %}
+
+
+{% include 'Footer.html.twig' %}

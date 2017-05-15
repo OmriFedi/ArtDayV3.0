@@ -1,0 +1,61 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Reclamations list</h1>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+               <th>user name</th>
+                <th>user mail</th>
+                <th>Sujet</th>
+                <th>Description</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{  app.user.username  }}</td>
+                <td>{{ app.user.email }}</td>
+                <td>{{ reclamation.sujet }}</td>
+                <td>{{ reclamation.description }}</td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reclamation_delete', { 'id': reclamation.id }) }}">Supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">Repondre</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>
+        </li>
+    </ul>
+
+
+
+
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}

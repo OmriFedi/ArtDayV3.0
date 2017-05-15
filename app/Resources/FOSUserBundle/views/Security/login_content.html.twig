@@ -1,0 +1,111 @@
+{% trans_default_domain 'FOSUserBundle' %}
+ {% include 'Header.html.twig' %}
+
+{% block body %}
+
+
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-inner">
+                <ul class="list-inline list-unstyled">
+                    <li><a href="home.html">Home</a></li>
+                    <li class='active'>Authentication</li>
+                </ul>
+            </div><!-- /.breadcrumb-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.breadcrumb -->
+
+
+
+   <div class="body-content outer-top-bd">
+    <div class="container">
+        <div class="sign-in-page inner-bottom-sm">
+            <div class="row">
+                <!-- Sign-in -->
+          <div class="col-md-6 col-sm-6 sign-in">
+        <h4 class="">sign in</h4>
+        <p class="">Hello, Welcome to your account.</p>
+        <div class="social-sign-in outer-top-xs">
+            <a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+            <a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+        </div>
+
+
+              {% if error %}
+                  <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+              {% endif %}
+
+              <form action="{{ path('fos_user_security_check') }}" method="post">
+                  {% if csrf_token %}
+                      <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                  {% endif %}
+
+
+
+                  <div class="form-group">
+                      <label class="info-title" for="exampleInputEmail1">{{ 'security.login.username'|trans }} <span>*</span></label>
+                      <input type="email" class="form-control unicase-form-control text-input" id="username" name="_username" value="{{ last_username }}" required="required" >
+                  </div>
+
+                  <div class="form-group">
+                      <label class="info-title" for="exampleInputPassword1">{{ 'security.login.password'|trans }} <span>*</span></label>
+                      <input type="password" class="form-control unicase-form-control text-input" id="password" name="_password" required="required" >
+                  </div>
+
+                  <div class="radio outer-xs">
+                  <label>
+                      <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                      <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                  </label>
+                  <a href="{{ path('fos_user_resetting_request') }}" class="forgot-password pull-right">Forgot your Password?</a>
+                    </div>
+                  <input type="submit" id="_submit" name="_submit" class="btn-upper btn btn-primary checkout-page-button" value="{{ 'security.login.submit'|trans }}" />
+              </form>
+    </div>
+<!-- Sign-in -->
+
+    <div class="col-md-6 col-sm-6 create-new-account">
+        <h4 class="checkout-subtitle">create a new account</h4>
+        <p class="text title-tag-line">Create your own Unicase account.</p>
+
+            <div class="form-group">
+                <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
+                <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" >
+            </div>
+        <a href="{{ path('fos_user_registration_register') }}">  <button   class="btn-upper btn btn-primary checkout-page-button">Sign Up</button></a>
+         <span class="checkout-subtitle outer-top-xs">Sign Up Today And You'll Be Able To :  </span>
+        <div class="checkbox">
+            <label class="checkbox">
+                <input type="checkbox" id="speed" value="option1"> Speed your way through the checkout.
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="track" value="option2"> Track your orders easily.
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" id="keep" value="option3"> Keep a record of all your purchases.
+            </label>
+        </div>
+    </div>
+    <!-- create a new account -->
+        </div><!-- /.row -->
+    </div><!-- /.sigin-in-->
+    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
+
+   </div> <!-- container -->
+    </div><!-- /.body-content -->
+
+
+
+
+
+
+{% endblock %}
+{% include 'Footer.html.twig' %}
+
+</html>
+
+
+
+
+
+

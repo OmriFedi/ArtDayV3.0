@@ -1,0 +1,41 @@
+{% include 'Header.html.twig' %}
+
+
+{% block body %}
+
+    {{ form_start(form) }}
+<div class="col-md-6 col-sm-6 sign-in">
+    <form  method="post" action="{{ path('Front_contact') }}">
+
+        {{ form_start(form) }}
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Nom<span>*</span></label>
+            {{ form_widget(form.nom, { 'attr': {'class': 'form-control unicase-form-control text-input', } } ) }}
+        </div>
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Email<span>*</span></label>
+            {{ form_widget(form.email , { 'attr': {'class': 'form-control unicase-form-control text-input', } }) }}
+        </div>
+
+        <div class="form-group" id="reponse" >
+            <label class="info-title" for="exampleInputEmail1">Message<span>*</span></label>
+            {{ form_widget(form.message, { 'attr': {'class': 'form-control unicase-form-control text-input', } }) }}
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Envoyer" />
+        </div>
+        {{ form_end(form) }}
+    </form>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('contact_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    {% endblock %}
+
+{% include 'Footer.html.twig' %}
+

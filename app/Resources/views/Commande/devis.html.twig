@@ -1,0 +1,58 @@
+{% include('::Header.html.twig') %}
+
+
+
+<script src="{{ asset('assets/dist/minicart.js') }}"></script>
+<script>
+    paypal.minicart.render();
+    paypal.minicart.cart.destroy();
+</script>
+
+
+<div class="body-content outer-top-bd">
+    <div class="container">
+        <div class="row">
+
+
+            <script>
+                function printContent(el){
+                    var restorepage = $('body').html();
+                    var printcontent = $('#' + el).clone();
+                    $('body').empty().html(printcontent);
+                    window.print();
+                    $('body').html(restorepage);
+                }
+            </script>
+
+            <button id="print" onclick="printContent('a');" class="btn btn-primary" style="background : #37b8d8" target="_blanck"><img src="http://3sixtytravel.com.tn/assets/img/print.png"> Imprimer</button>
+
+
+            <div class="blog-page" id="a">
+                <div class="col-md-12">
+                    <center><h1>Devis CLient</h1></center>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="8" style="padding: 20px 20px 20px; box-shadow: 2px 2px 2px #222">
+                        <center>Client</center>
+    <h5>Nom&Prénom : {{ user.username }} </h5>
+
+</div>
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <th>Produit</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        </thead>
+                        <tbody>
+                        {{ description | raw }}
+
+                        </tbody>
+
+                    </table>
+                    <h3><strong>Total : </strong> {{ total }} </h3>
+
+                </div></div></div></div></div>
+
+{% include('::Footer.html.twig') %}

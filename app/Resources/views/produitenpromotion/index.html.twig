@@ -1,0 +1,62 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+    <div class="table-responsive">
+        <table id="example" class="table table-bordered nomargin">
+        <thead>
+            <tr>
+
+                <th>Produit_En_Promotion</th>
+                <th>Produit_En_Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produitEnPromotion in produitEnPromotions %}
+
+
+            <tr>
+                 <td><img src="{{ asset('/images_produits/' ~produitEnPromotion.produitIf.image~ '') }}" style="width: 100px; height: 100px;"></td>
+                <td>{{ produitEnPromotion.produitIf.prix }}</td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('produitenpromotion_show', { 'id': produitEnPromotion.id }) }}"><i class="fa fa-trash"></i>Supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('produitenpromotion_edit', { 'id': produitEnPromotion.id }) }}"><i class="fa fa-pencil"></i>Editer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('produitenpromotion_new') }}" class="btn btn-success">Create a new produitEnPromotion</a>
+        </li>
+    </ul>
+
+    </div>
+    </div><!-- mainpanel -->
+{% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $( "#promotion" ).toggleClass( "nav-parent active" )
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>

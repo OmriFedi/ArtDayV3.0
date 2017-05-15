@@ -1,0 +1,50 @@
+app_produit:
+    resource: "@AppBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+
+app_categorie:
+    resource: "@AppBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+app_produit_en_promotion:
+    resource: "@AppBundle/Resources/config/routing/produitenpromotion.yml"
+    prefix:   /produitenpromotion
+
+reclamation_index:
+    defaults: { _controller: "AppBundle:Reclamation:index" }
+    path:     /
+
+reclamation_show:
+    defaults: { _controller: "AppBundle:Reclamation:show" }
+    path:     /{id}/show
+
+reclamation_new:
+    defaults: { _controller: "AppBundle:Reclamation:new" }
+    path:     /new
+
+reclamation_edit:
+    defaults: { _controller: "AppBundle:Reclamation:edit" }
+    path:     /{id}/edit
+
+reclamation_delete:
+    defaults: { _controller: "AppBundle:Reclamation:delete" }
+    path:     /{id}/delete
+
+contact_index:
+    defaults: { _controller: "AppBundle:Contact:index" }
+    path:     /
+
+contact_show:
+    defaults: { _controller: "AppBundle:Contact:show" }
+    path:     /{id}/show
+
+contact_new:
+    defaults: { _controller: "AppBundle:Contact:new" }
+    path:     /new
+
+contact_edit:
+    defaults: { _controller: "AppBundle:Contact:edit" }
+    path:     /{id}/edit
+
+contact_delete:
+    defaults: { _controller: "AppBundle:Contact:delete" }
+    path:     /{id}/delete

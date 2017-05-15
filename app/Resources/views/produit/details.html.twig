@@ -1,0 +1,115 @@
+{% include 'Header.html.twig' %}
+
+
+
+<!-- ============================================== HEADER : END ============================================== -->
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="#">Home</a></li>
+                <li class='active'>Smart Phone</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+    <div class='container'>
+        <div class='row outer-bottom-sm'>
+            <div class='col-md-3 sidebar'>
+                <!-- ================================== TOP NAVIGATION ================================== -->
+                <div class="side-menu animate-dropdown outer-bottom-xs">
+                    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+                    <nav class="yamm megamenu-horizontal" role="navigation">
+                        <ul class="nav">
+
+
+                            {% for modele in modeles %}
+
+
+                                <li class="dropdown menu-item"><a href="{{ path('products', {'id': modele.id}) }}" class="dropdown-toggle" data-toggle=""></a></li><!-- /.menu-item -->
+
+
+
+                            {% endfor %}
+
+                        </ul><!-- /.nav -->
+                    </nav><!-- /.megamenu-horizontal -->
+                </div><!-- /.side-menu -->
+                <!-- ================================== TOP NAVIGATION : END ================================== -->
+            </div><!-- /.sidebar -->
+            <div class='col-md-9'>
+<div class='col-sm-6 col-md-7 product-info-block'>
+    <div class="product-info">
+        <h1 class="name">{{ details.nom }}</h1>
+
+        <div class="rating-reviews m-t-20">
+            <div class="row">
+                <div class="col-sm-3">
+
+                </div>
+
+            </div><!-- /.row -->
+        </div><!-- /.rating-reviews -->
+
+        <div class="stock-container info-container m-t-10">
+            <div class="row">
+
+                <div class="col-sm-9">
+                    <div class="stock-box">
+                        <img src="assets/images/blank.gif"
+                             data-echo="{{ asset('images_produits/'~ details.image  ~ '') }}"
+                             style="height: 200px;width: 200px;box-shadow: 2px 2px 2px #222"
+                             alt=""></br></br></br>
+                        <span class="value">Nom du produit : {{ details.nom }}</span></br>
+                        <span class="value">Référence du produit : {{ details.ref }}</span></br>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.stock-container -->
+
+        <div class="description-container m-t-20">
+           Description du produit : {{ details.description }}
+        </div><!-- /.description-container -->
+
+        <div class="price-container info-container m-t-20">
+            <div class="row">
+
+
+                <div class="col-sm-6">
+                    <div class="price-box">
+                        <span class="price">Prix : </span>
+                        <span class="price-strike">{{ details.prix }} TND</span>
+                    </div>
+                </div>
+
+
+
+            </div><!-- /.row -->
+        </div><!-- /.price-container -->
+
+
+
+        <div class="product-social-link m-t-20 text-right">
+            <span class="social-label">Share :</span>
+            <div class="social-icons">
+
+
+                "{{ socialButtons() }}"
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div><!-- /.product-info -->
+</div><!-- /.col-sm-7 -->
+            </div><!-- /.body-content -->
+
+        </div>
+    </div>
+
+{% include 'Footer.html.twig' %}

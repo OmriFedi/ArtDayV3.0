@@ -1,0 +1,70 @@
+{% include 'AdminHeader.html.twig' %}
+{% include 'AdminFooter.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+        <div class="contentpanel">
+
+
+
+
+
+        <div class="table-responsive">
+
+            <table id="example" class="table table-bordered nomargin">
+                    <thead>
+                    <tr>
+
+                        <th>Ref</th>
+                        <th>Nom</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in produits %}
+                        <tr>
+                             <td>{{ produit.ref }}</td>
+                            <td>{{ produit.nom }}</td>
+                            <td><img src="{{ asset('images_produits/' ~produit.image~ '') }}" style="width: 150px; height: 150px;"></td>
+                            <td>{{ produit.description }}</td>
+                            <td>{{ produit.prix }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('produit_show', { 'id': produit.id }) }}"><i class="fa fa-trash"></i>Supprimer</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}"><i class="fa fa-pencil"></i>Editer</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('produit_new') }}" class="btn btn-success">Create a new produit</a>
+                    </li>
+                </ul>
+
+        </div>
+
+        </div>
+        </div><!-- mainpanel -->
+    {% endblock %}
+{% endblock %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>

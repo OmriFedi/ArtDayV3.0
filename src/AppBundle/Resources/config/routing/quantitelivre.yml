@@ -1,0 +1,29 @@
+quantitelivre_index:
+    path:     /
+    defaults: { _controller: "AppBundle:QuantiteLivre:index" }
+    methods:  GET
+
+quantitelivre_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:QuantiteLivre:show" }
+    methods:  GET
+
+quantitelivre_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:QuantiteLivre:new" }
+    methods:  [GET, POST]
+
+quantitelivre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:QuantiteLivre:edit" }
+    methods:  [GET, POST]
+
+quantitelivre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:QuantiteLivre:delete" }
+    methods:  DELETE
+quantitelivre_goToLivraison:
+    path:     /{id}/LaLivraison
+    defaults: { _controller: "AppBundle:QuantiteLivre:showLivraison" }
+    methods:  [GET, POST]
+

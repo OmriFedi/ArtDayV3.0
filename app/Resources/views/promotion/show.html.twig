@@ -1,0 +1,61 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Promotion</h1>
+    <div class="table-responsive">
+    <table class="table table-bordered table-inverse table-striped nomargin">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ promotion.id }}</td>
+            </tr>
+            <tr>
+                <th>Refpromotion</th>
+                <td>{{ promotion.refPromotion }}</td>
+            </tr>
+            <tr>
+                <th>Tauxpromotion</th>
+                <td>{{ promotion.tauxPromotion }}</td>
+            </tr>
+            <tr>
+                <th>Typepromotion</th>
+                <td>{{ promotion.typePromotion }}</td>
+            </tr>
+
+            <tr>
+                <th>Date debut de promotion</th>
+                <td>{{ promotion.dateDebut|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Date debut de promotion</th>
+                <td>{{ promotion.dateFin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('promotion_index') }}" class="btn btn-default">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('promotion_edit', { 'id': promotion.id }) }}" class="btn btn-success">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+<script type="text/javascript">
+    $( "#promotion" ).toggleClass( "nav-parent active" )
+</script>
+{% include 'AdminFooter.html.twig' %}

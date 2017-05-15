@@ -1,0 +1,48 @@
+
+{% include ('Header.html.twig') %}
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+                <h1>Reclamations list</h1>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>user name</th>
+                        <th>user mail</th>
+                        <th>Sujet</th>
+                        <th>Description</th>
+                        <th>Reponses</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reclamation in reclamations %}
+                        <tr>
+                            <td>{{  app.user.username  }}</td>
+                            <td>{{ app.user.email }}</td>
+                            <td>{{ reclamation.sujet }}</td>
+                            <td>{{ reclamation.description }}</td>
+                            <td>{{ reclamation.reponse }}</td>
+
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('Front_reclamation') }}">Create a new reclamation</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+
+{% include '::Footer.html.twig' %}

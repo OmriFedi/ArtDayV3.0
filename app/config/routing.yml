@@ -1,0 +1,92 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+categorie:
+    resource: "@AppBundle/Resources/config/routing/categorie.yml"
+    prefix: /categorie
+promotion:
+    resource: "@AppBundle/Resources/config/routing/promotion.yml"
+    prefix: /promotion
+produit_en_promotion:
+    resource: "@AppBundle/Resources/config/routing/produitenpromotion.yml"
+    prefix: /produitenpromotion
+produit:
+    resource: "@AppBundle/Resources/config/routing/produit.yml"
+    prefix: /produit
+bon_livraison:
+    resource: "@AppBundle/Resources/config/routing/bonlivraison.yml"
+    prefix: /livraison
+quantiteLivree:
+    resource: "@AppBundle/Resources/config/routing/quantitelivre.yml"
+    prefix: /quantitelivre
+quantiteCommandee:
+    resource: "@AppBundle/Resources/config/routing/quantitecommandee.yml"
+    prefix: /quantitecommandee
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+reclamation:
+    resource: "@AppBundle/Resources/config/routing/reclamation.yml"
+    prefix: /reclamation
+contact:
+    resource: "@AppBundle/Resources/config/routing/contact.yml"
+    prefix: /contact
+
+Admin:
+    path:     /dashboard
+    defaults: { _controller: AppBundle:Admin:index }
+Index_page:
+    path:     /home
+    defaults: { _controller: AppBundle:Default:index }
+front_produit_promotion:
+    path:     /FrontproduitEnPromotion
+    defaults: { _controller: AppBundle:Default:produitEnPromotion}
+commentaire:
+    resource: "@AppBundle/Resources/config/routing/commentaire.yml"
+    prefix: /commentaire
+commander:
+    path:     /commander
+    defaults: { _controller: AppBundle:QuantiteCommandee:AjouterCommande }
+gestion_commande:
+    path:     /gestion_commande
+    defaults: { _controller: AppBundle:QuantiteCommandee:AfficherCommande }
+
+commande:
+    path:     /commande/{id}
+    defaults: { _controller: AppBundle:QuantiteCommandee:commande }
+valider:
+    path:     /valider/{id}
+    defaults: { _controller: AppBundle:QuantiteCommandee:valider }
+
+
+archiver:
+    path:     /archiver/{id}
+    defaults: { _controller: AppBundle:QuantiteCommandee:archiver }
+archive:
+    path:     /archive
+    defaults: { _controller: AppBundle:QuantiteCommandee:archive}
+
+
+
+Front_contact:
+    path:     /contactfront
+    defaults: { _controller: AppBundle:Default:contact}
+Front_reclamation:
+    path:     /reclamationfront
+    defaults: { _controller: AppBundle:Default:reclamation}
+Font_reclamation_Response:
+    path:     /reclamationfrontReponse
+    defaults: { _controller: AppBundle:Default:mesReponses}
+
+_grapheChartLin:
+    path:     /chartlin
+    defaults: { _controller: AppBundle:Graphe:chartLin }
+piechart:
+    path:     /chart
+    defaults: { _controller: AppBundle:Graphe:cht3 }
+
+my_app_mail_accuse:
+    path:     /success
+    defaults: { _controller: AppBundle:Contact:success }

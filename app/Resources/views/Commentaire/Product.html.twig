@@ -1,0 +1,194 @@
+
+
+
+
+{% include '::Header.html.twig' %}
+
+
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="#">Home</a></li>
+                <li class='active'>Blog Details</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+
+<div class="body-content outer-top-bd">
+    <div class="container">
+        <div class="row">
+            <div class="blog-page">
+                <div class="col-md-12">
+                    <div class="blog-post wow fadeInUp">
+                        <img class="img-responsive" src="{{ asset('assets/images/6.jpg') }}" alt="" style="width: 400px; height: 600px;">
+                        <h1>tableau peinture acrylique abstrait art contemporain Toile Noir</h1>
+                        <span class="author">Amine Zammeli </span>
+                        <p>Integer sit amet commodo eros, sed dictum ipsum. Integer sit amet commodo eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul um quis convallis lorem, ac volutpat magna. Suspendisse potenti. Sed lobortis sagittis ante, ut luctus elit pharetra nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis convallis lorem, ac volutpat magna.Integer sit amet commodo eros, sed dictum ipsum. Integer sit amet commodo eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul um quis convallis lorem, ac volutpat magna. Suspendisse potenti. Sed lobortis sagittis ante, ut luctus elit pharetra nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis convallis lorem, ac volutpat magna. Integer sit amet commodo eros, sed dictum ipsum. Integer sit amet commodo eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul um quis convallis lorem, ac volutpat magna. Suspendisse potenti. Sed lobortis sagittis ante, ut luctus elit pharetra nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis convallis lorem, ac volutpat magna. Integer sit amet commodo eros, sed dictum ipsum. Integer sit amet commodo eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul um quis convallis lorem, ac volutpat magna. Suspendisse potenti. Sed lobortis sagittis ante, ut luctus elit pharetra nec. Integer sit amet commodo eros, sed dictum ipsum. Integer sit amet commodo eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul um quis convallis lorem, ac volutpat magna. Suspendisse potenti. Sed lobortis sagittis ante, ut luctus elit pharetra nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis convallis lorem, ac volutpat magna.Suspendisse potenti...</p>
+
+                    </div>
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+
+                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+                    <div class="blog-review wow fadeInUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title-review-comments"></h3>
+                            </div>
+
+                            {% for cmnt in cmnts %}
+                                <div class="col-md-2 col-sm-2">
+                                    <img src="{{ asset('assets/images/loggeduser.png') }}" alt="Responsive image" class="img-rounded img-responsive">
+                                </div>
+                                <div class="col-md-10 col-sm-10 blog-comments outer-bottom-xs">
+
+                                    <div class="blog-comments inner-bottom-xs">
+                                        <h4> {{ cmnt.nom }} </h4>
+                                        <span class="review-action pull-right">
+					{{ cmnt.created|date('Y/m/d H:i:s')}}</br>
+                                            <a href=""> {{ cmnt.titre }} </a> &sol;
+                                            <a href=""> {{ cmnt.email }} </a>
+				</span>
+                                        <p> {{ cmnt.description }} </p>
+                                    </div>
+
+                                    {% if cmnt.reponse != "0" %}
+
+                                    <div class="col-md-12 col-sm-12 blog-comments outer-bottom-xs" style="background: #ccc">
+
+                                        <div class="blog-comments inner-bottom-xs">
+                                            <h4> Réponse Admin </h4>
+                                            <span class="review-action pull-right">
+					{{ cmnt.updated |date('Y/m/d H:i:s')}}</br>
+
+				</span>
+                                            <p> {{ cmnt.reponse }} </p>
+                                        </div>
+
+
+                                    </div>
+
+                                    {% endif %}
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>					<div class="blog-write-comment m-t-20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Ecrire un commentaire </h4>
+                            </div>
+                            <form  role="form" action="add_commentaire" method="POST">
+
+                                {{ form_start(Form_1, {'method': 'POST'}) }}
+
+                                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label class="info-title" for="exampleInputName">Your Name <span>*</span></label>
+                                        {{ form_widget(Form_1.nom, { 'attr': {'class': 'form-control unicase-form-control text-input','placeholder':'votre nom','name':"nom"} }) }}
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+                                        {{ form_widget(Form_1.email, { 'attr': {'class': 'form-control unicase-form-control text-input','placeholder':'votre email','name':'email'} }) }}
+                                    </div>
+
+                                </div>
+
+                                {% else %}
+                                 <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="info-title" for="exampleInputName">Your Name <span>*</span></label>
+                                    {{ form_widget(Form_1.nom, { 'attr': {'class': 'form-control unicase-form-control text-input','name':"nom",'value': app.user.username } }) }}
+                                </div>
+
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+                                {{ form_widget(Form_1.email, { 'attr': {'class': 'form-control unicase-form-control text-input','name':'email','value': app.user.email } }) }}
+                            </div>
+
+                        </div>
+
+
+
+
+                                {% endif %}
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label class="info-title" for="exampleInputTitle">Title <span>*</span></label>
+                                        {{ form_widget(Form_1.titre, { 'attr': {'class': 'form-control unicase-form-control text-input','placeholder':'titre','name':''} }) }}
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4" style="display: none">
+
+
+
+                                </div>
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label class="info-title" for="exampleInputComments">Your Comments <span>*</span></label>
+                                        {{ form_widget(Form_1.description, { 'attr': {'class': 'form-control unicase-form-control text-input','placeholder':'description ici ....','name':'description'} }) }}
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12" style="display: none">
+
+                                    <div class="form-group">
+                                        <label class="info-title" for="exampleInputComments">Your Comments <span>*</span></label>
+                                        {{ form_widget(Form_1.reponse, { 'attr': {'class': 'form-control unicase-form-control text-input','placeholder':'description ici ....','name':'description'} }) }}
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12 outer-bottom-small m-t-20">
+                                    {{ form_widget(Form_1.ajout, { 'attr': {'class': 'btn-upper btn btn-primary checkout-page-button'} }) }}
+
+
+                                </div>
+
+                                {{ form_end(Form_1) }}
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+

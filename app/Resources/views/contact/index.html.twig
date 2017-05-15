@@ -1,0 +1,54 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Contacts list</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Supprimer</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+
+            <tr>
+
+                <td>{{ contact.nom }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.message }}</td>
+
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contact_delete', { 'id': contact.id }) }}">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}

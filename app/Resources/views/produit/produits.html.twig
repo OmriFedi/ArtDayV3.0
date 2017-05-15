@@ -1,0 +1,242 @@
+{% include 'Header.html.twig' %}
+
+
+
+
+
+<!-- ============================================== HEADER : END ============================================== -->
+<div class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <ul class="list-inline list-unstyled">
+                <li><a href="#">Home</a></li>
+                <li class='active'>Smart Phone</li>
+            </ul>
+        </div><!-- /.breadcrumb-inner -->
+    </div><!-- /.container -->
+</div><!-- /.breadcrumb -->
+<div class="body-content outer-top-xs">
+    <div class='container'>
+        <div class='row outer-bottom-sm'>
+            <div class='col-md-3 sidebar'>
+                <!-- ================================== TOP NAVIGATION ================================== -->
+                <div class="side-menu animate-dropdown outer-bottom-xs">
+                    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+                    <nav class="yamm megamenu-horizontal" role="navigation">
+                        <ul class="nav">
+
+
+                            {% for modele in modeles %}
+
+
+                                <li class="dropdown menu-item"><a href="{{ path('products', {'id': modele.id}) }}" class="dropdown-toggle" data-toggle="">{{ modele.libelleCategorie }} </a></li><!-- /.menu-item -->
+
+
+
+                            {% endfor %}
+
+                        </ul><!-- /.nav -->
+                    </nav><!-- /.megamenu-horizontal -->
+                </div><!-- /.side-menu -->
+                <!-- ================================== TOP NAVIGATION : END ================================== -->
+            </div><!-- /.sidebar -->
+            <div class='col-md-9'>
+                <!-- ========================================== SECTION – HERO ========================================= -->
+
+
+
+
+
+                <!-- ========================================= SECTION – HERO : END ========================================= -->
+                <div class="clearfix filters-container m-t-10">
+                    <div class="row">
+                        <div class="col col-sm-6 col-md-2">
+                            <div class="filter-tabs">
+                                <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-list"></i>Grid</a>
+                                    </li>
+                                    <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th"></i>List</a></li>
+                                </ul>
+                            </div><!-- /.filter-tabs -->
+                        </div><!-- /.col -->
+                        <div class="col col-sm-12 col-md-6">
+
+                        </div><!-- /.col -->
+                        <div class="col col-sm-6 col-md-4 text-right">
+                           <h1>{{ titre }}</h1>
+                    </div><!-- /.row -->
+                </div>
+                <div class="search-result-container">
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active " id="grid-container">
+                            <div class="category-product  inner-top-vs">
+                                <div class="row">
+
+                                    {% for product in product %}
+
+                                    <div class="col-sm-6 col-md-4 wow fadeInUp" style="box-shadow: 2px 2px 2px #222">
+                                        <div class="products">
+
+                                            <div class="product">
+                                                <div class="product-image">
+                                                    <div class="image">
+                                                        <a href="{{ path('details_product', {'id': product.id}) }}"><img data-echo="{{ asset('images_produits/' ~ product.image  ~ '') }}" style="width : 275px;height: 300px" alt=""></a>
+                                                </div><!-- /.image -->
+
+
+                                                </div><!-- /.product-image -->
+
+
+                                                <div class="product-info text-left">
+                                                    <h3 class="name"><a href="{{ path('details_product', {'id': product.id}) }}">{{ product.nom }}</a></h3>
+
+                                                    <div class="description"></div>
+
+                                                    <div class="product-price">
+				<span class="price">
+					{{ product.prix }}		TND		</span>
+
+
+                                                    </div><!-- /.product-price -->
+
+                                                </div><!-- /.product-info -->
+                                                <div class="cart clearfix animate-effect">
+                                                    <div class="action">
+                                                        <ul class="list-unstyled">
+                                                            <li class="add-cart-button btn-group">
+                                                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+                                                                    <i class="fa fa-shopping-cart"></i>
+                                                                </button>
+                                                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="cartButton">
+                                                                    <fieldset>
+                                                                        <input type="hidden" name="cmd" value="_cart" />
+                                                                        <input type="hidden" name="add" value="1" />
+                                                                        <input type="hidden" name="business" value="example@minicartjs.com" />
+                                                                        <input type="hidden" name="item_name" value="{{ product.nom }}" />
+                                                                        <input type="hidden" name="amount" value="{{ product.prix }}" />
+                                                                        <input type="hidden" name="discount_amount" value="0.00" />
+                                                                        <input type="hidden" name="currency_code" value="TND" />
+                                                                        <input type="hidden" name="return" value="http://www.minicartjs.com/?success" />
+                                                                        <input type="hidden" name="cancel_return" value="http://www.minicartjs.com/?cancel" />
+
+                                                                        <input type="submit" name="submit" value="Commander" class="btn btn-primary" />
+                                                                    </fieldset>
+                                                                </form>
+                                                            </li>
+
+
+
+                                                            <li class="lnk">
+                                                                <a class="add-to-cart" href="detail.html" title="Compare">
+                                                                    <i class="fa fa-retweet"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div><!-- /.action -->
+                                                </div><!-- /.cart -->
+                                            </div><!-- /.product -->
+
+                                        </div><!-- /.products -->
+                                    </div><!-- /.item -->
+
+                                    {% endfor %}
+
+                                </div><!-- /.row -->
+                            </div><!-- /.category-product -->
+
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane "  id="list-container">
+                            <div class="category-product  inner-top-vs">
+
+                        {% for product in product %}
+
+                                <div class="category-product-inner wow fadeInUp" style="box-shadow: 2px 2px 2px #222">
+                                    <div class="products">
+                                        <div class="product-list product">
+                                            <div class="row product-list-row">
+                                                <div class="col col-sm-4 col-lg-4">
+                                                    <div class="product-image">
+                                                        <div class="image">
+                                                            <img data-echo="{{ asset('images_produits/' ~ product.image  ~ '') }}" style="height: 300px;width: 200px" src="assets/images/blank.gif" alt="">
+                                                        </div>
+                                                    </div><!-- /.product-image -->
+                                                </div><!-- /.col -->
+                                                <div class="col col-sm-8 col-lg-8">
+                                                    <div class="product-info">
+                                                        <h3 class="name"><a href="detail.html">{{ product.nom }}</a></h3>
+
+                                                        <div class="product-price">
+					<span class="price">
+						{{ product.prix }}	TND		</span>
+
+
+                                                        </div><!-- /.product-price -->
+                                                        <div class="description m-t-10"> {{ product.description }}... </div>
+                                                        <div class="cart clearfix animate-effect">
+                                                            <div class="action">
+                                                                <ul class="list-unstyled">
+                                                                    <li class="add-cart-button btn-group">
+                                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+                                                                            <i class="fa fa-shopping-cart"></i>
+                                                                        </button>
+                                                                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="cartButton">
+                                                                            <fieldset>
+                                                                                <input type="hidden" name="cmd" value="_cart" />
+                                                                                <input type="hidden" name="add" value="1" />
+                                                                                <input type="hidden" name="business" value="example@minicartjs.com" />
+                                                                                <input type="hidden" name="item_name" value="{{ product.nom }}" />
+                                                                                <input type="hidden" name="amount" value="{{ product.prix }}" />
+                                                                                <input type="hidden" name="discount_amount" value="0.00" />
+                                                                                <input type="hidden" name="currency_code" value="TND" />
+                                                                                <input type="hidden" name="return" value="http://www.minicartjs.com/?success" />
+                                                                                <input type="hidden" name="cancel_return" value="http://www.minicartjs.com/?cancel" />
+
+                                                                                <input type="submit" name="submit" value="Commander" class="btn btn-primary" />
+                                                                            </fieldset>
+                                                                        </form>
+
+                                                                    </li>
+
+
+
+
+                                                                </ul>
+                                                            </div><!-- /.action -->
+                                                        </div><!-- /.cart -->
+
+                                                    </div><!-- /.product-info -->
+                                                </div><!-- /.col -->
+                                            </div><!-- /.product-list-row -->
+                                                  </div><!-- /.product-list -->
+                                    </div><!-- /.products -->
+                                </div><!-- /.category-product-inner -->
+
+                        {% endfor %}
+
+                            </div><!-- /.category-product -->
+                        </div><!-- /.tab-pane #list-container -->
+                    </div><!-- /.tab-content -->
+                    <div class="clearfix filters-container">
+
+                        <div class="text-right">
+                            <div class="pagination-container">
+                                <ul class="list-inline list-unstyled">
+                                    {{ knp_pagination_render(product) }}
+                                </ul><!-- /.list-inline -->
+                            </div><!-- /.pagination-container -->						    </div><!-- /.text-right -->
+
+                    </div><!-- /.filters-container -->
+
+                </div><!-- /.search-result-container -->
+
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+</div><!-- /.body-content -->
+
+    </div>
+
+
+{% include 'Footer.html.twig' %}

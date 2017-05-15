@@ -1,0 +1,39 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+    <h1>Reclamation edit</h1>
+
+    {{ form_start(edit_form) }}
+
+
+
+                <div class="form-group">
+                    <label class="info-title" for="exampleInputEmail1">Reponse<span>*</span></label>
+                    {{ form_widget(edit_form.reponse, { 'attr': {'class': 'form-control unicase-form-control text-input', } } ) }}
+                </div>
+                <input type="submit" value="Send" />
+
+                <div class="form-group" style="visibility: hidden">
+                    {{ form_widget(edit_form.sujet, { 'attr': {'class': 'form-control unicase-form-control text-input', } } ) }}
+                </div>
+
+                <div class="form-group" style="visibility: hidden">
+                    {{ form_widget(edit_form.description, { 'attr': {'class': 'form-control unicase-form-control text-input', } } ) }}
+                </div>
+
+
+
+    {{ form_end(edit_form) }}
+
+
+    </div>
+    </div><!-- mainpanel -->
+{% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}

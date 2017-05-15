@@ -1,0 +1,24 @@
+produitenpromotion_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ProduitEnPromotion:index" }
+    methods:  GET
+
+produitenpromotion_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ProduitEnPromotion:show" }
+    methods:  GET
+
+produitenpromotion_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ProduitEnPromotion:new" }
+    methods:  [GET, POST]
+
+produitenpromotion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ProduitEnPromotion:edit" }
+    methods:  [GET, POST]
+
+produitenpromotion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ProduitEnPromotion:delete" }
+    methods:  DELETE

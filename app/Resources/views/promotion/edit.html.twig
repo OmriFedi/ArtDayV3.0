@@ -1,0 +1,62 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Promotion edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+
+        <div class="form-group">
+            <label class="info-title" for="exampleInputEmail1">Référence <span>*</span></label>
+            {{ form_widget(edit_form.refPromotion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+        <label class="info-title" for="exampleInputEmail1">Taux de promotion<span>*</span></label>
+        {{ form_widget(edit_form.tauxPromotion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div>
+            <label class="info-title" for="exampleInputEmail1">Type de promotion<span>*</span></label>
+            {{ form_widget(edit_form.typePromotion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div>
+            <label class="info-title" for="exampleInputEmail1">Date debut de promotion<span>*</span></label>
+            {{ form_widget(edit_form.dateDebut) }}
+        </div>
+
+        <div>
+            <label class="info-title" for="exampleInputEmail1">Date fin de promotion<span>*</span></label>
+            {{ form_widget(edit_form.dateFin) }}
+        </div>
+
+        <div>
+            <input type="submit" value="Edit" />
+        </div>
+
+        <input type="submit" value="Edit" class="btn btn-success"/>
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('promotion_index') }}" class="btn btn-default">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $( "#promotion" ).toggleClass( "nav-parent active" )
+</script>

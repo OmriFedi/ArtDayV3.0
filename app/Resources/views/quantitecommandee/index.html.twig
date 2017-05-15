@@ -1,0 +1,61 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Quantitecommandees list</h1>
+    <div class="table-responsive">
+        <table id="example" class="table table-bordered nomargin">
+        <thead>
+            <tr>
+
+                <th>Quantite_c</th>
+                <th>Promotion réference</th>
+                <th>Bon de commande</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quantiteCommandee in quantiteCommandees %}
+            <tr>
+                 <td>{{ quantiteCommandee.quantitec }}</td>
+                <td>{{ quantiteCommandee.promotionId }}</td>
+                <td>{{ quantiteCommandee.boncommandeId.bonCommande }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('quantitecommandee_show', { 'id': quantiteCommandee.id }) }}"><i class="fa fa-trash"></i>Supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('quantitecommandee_edit', { 'id': quantiteCommandee.id }) }}"><i class="fa fa-pencil"></i>Editer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('quantitecommandee_new') }}" class="btn btn-success">Create a new quantiteCommandee</a>
+        </li>
+    </ul>
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>
+<script type="text/javascript">
+    $( "#commande" ).toggleClass( "nav-parent active" )
+</script>

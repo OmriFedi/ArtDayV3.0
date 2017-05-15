@@ -1,0 +1,54 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Quantitecommandee</h1>
+       <div class="table-responsive">
+    <table class="table table-bordered table-inverse table-striped nomargin">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ quantiteCommandee.id }}</td>
+            </tr>
+            <tr>
+                <th>Quantite_c</th>
+                <td>{{ quantiteCommandee.quantitec }}</td>
+            </tr>
+
+            <tr>
+                <th>Promotion_id</th>
+                <td>{{ quantiteCommandee.promotionId }}</td>
+            </tr>
+
+            <tr>
+                <th>Bon de commande </th>
+                <td>{{ quantiteCommandee.boncommandeId}}</td>
+            </tr>
+        </tbody>
+    </table>
+       </div>
+        <ul>
+        <li>
+            <a href="{{ path('quantitecommandee_index') }}" class="btn btn-default">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('quantitecommandee_edit', { 'id': quantiteCommandee.id }) }}" class="btn btn-success">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+<script type="text/javascript">
+    $( "#commande" ).toggleClass( "nav-parent active" )
+</script>
+{% include 'AdminFooter.html.twig' %}

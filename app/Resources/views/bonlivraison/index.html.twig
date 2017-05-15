@@ -1,0 +1,61 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+        <div class="table-responsive">
+            <table  id="example" class="table table-bordered nomargin" role="grid">
+                <thead>
+                <tr>
+
+                    <th>Num_bl</th>
+                    <th>Date_l</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bonLivraison in bonLivraisons %}
+                    <tr>
+                         <td>{{ bonLivraison.numbl }}</td>
+                        <td>{% if bonLivraison.datel %}{{ bonLivraison.datel|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('bonlivraison_show', { 'id': bonLivraison.id }) }}"><i class="fa fa-trash"></i>Supprimer</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('bonlivraison_edit', { 'id': bonLivraison.id }) }}"><i class="fa fa-pencil"></i>Editer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    <ul>
+        <li>
+
+            <a href="{{ path('bonlivraison_new') }}" class="btn btn-success">Create a new bonLivraison</a>
+        </li>
+    </ul>
+    </div>
+    </div><!-- mainpanel -->
+{% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>
+<script type="text/javascript">
+    $( "#livraison" ).toggleClass( "nav-parent active" )
+</script>

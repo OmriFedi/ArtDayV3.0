@@ -1,0 +1,168 @@
+{% include '::AdminHeader.html.twig' %}
+
+
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="index.html"><i class="fa fa-home mr5"></i>Admin</a></li>
+            <li><a href="basic-tables.html">Gestion de commentaires</a></li>
+
+        </ol>
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Gestion de commentaires </h4>
+
+
+
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table nomargin">
+                        <thead>
+                        <tr>
+
+                            <th>id</th>
+                            <th>Titre</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Crée le</th>
+                            <th>Valide</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for cmnt in cmnts %}
+                        {% if(cmnt.valide == 1) %}
+                            <tr>
+
+                                <td>{{ cmnt.id }}</td>
+                                <td>{{ cmnt.titre }}</td>
+                                <td>{{ cmnt.nom }}</td>
+                                <td>{{ cmnt.email }}</td>
+                                <td>{{ cmnt.created|date('Y/m/d H:i:s')}}</td>
+                                {% if(cmnt.valide == 0) %}
+                                <td>Non Validé </td>
+                                {% else %}
+                                <td> Validé </td>
+                                {% endif %}
+                                <td>
+                                    <ul class="table-options">
+                                        <li>
+                                            <a href="{{ path('page_repondre', {'id': cmnt.id}) }}" class="btn btn-primary" >Répondre</a>
+                                        </li>
+                                        <li><a href="{{ path('supprimer', {'id': cmnt.id}) }}"><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% else %}
+
+                            <tr style="background: rgba(217, 83, 79, 0.53)">
+
+                                <td>{{ cmnt.id }}</td>
+                                <td>{{ cmnt.titre }}</td>
+                                <td>{{ cmnt.nom }}</td>
+                                <td>{{ cmnt.email }}</td>
+                                <td>{{ cmnt.created|date('Y/m/d H:i:s')}}</td>
+                                {% if(cmnt.valide == 0) %}
+                                    <td>Non Validé </td>
+                                {% else %}
+                                    <td> Validé </td>
+                                {% endif %}
+                                <td>
+                                    <ul class="table-options">
+                                        <li>  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ cmnt.id }}valide">
+                                                Valider
+                                            </button>
+
+
+                                        </li>
+
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        {% endif %}
+
+                            <!-- Modal -->
+
+
+
+                            <div class="modal bounceIn animated" id="myModal{{ cmnt.id }}valide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Valider le commentaire de <strong>{{ cmnt.nom }} </strong> , crée le {{ cmnt.created|date('Y/m/d h:m:s')}}</h4>
+                                        </div>
+
+                                            <div class="modal-body">
+
+                                                <div class="col-sm-12">
+                                                    <div class="panel">
+                                                        <div class="panel-heading">
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="modal-footer">
+
+                                                               {{ cmnt.description }}
+
+
+
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </div><!-- panel -->
+
+
+
+
+
+
+
+
+
+
+
+
+                                                </div><!-- col-sm-6 -->
+
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <a href="{{ path('valider', {'id': cmnt.id}) }}" class="btn btn-primary">Activer</a>
+                                                <a href="{{ path('supprimer', {'id': cmnt.id}) }}" class="btn btn-danger">Supprimer</a>
+
+                                            </div>
+
+                                    </div><!-- modal-content -->
+                                </div><!-- modal-dialog -->
+                            </div><!-- modal -->
+
+
+
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div><!-- table-responsive -->
+            </div>
+        </div><!-- panel -->
+
+
+
+    </div><!-- contentpanel -->
+</div><!-- mainpanel -->
+
+
+
+{% include '::AdminFooter.html.twig' %}

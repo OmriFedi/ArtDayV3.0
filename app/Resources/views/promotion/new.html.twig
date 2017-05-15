@@ -1,0 +1,54 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+    <h1>Promotion creation</h1>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        <label class="info-title" for="exampleInputEmail1">Référence <span>*</span></label>
+        {{ form_widget(form.refPromotion, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div>
+        <label class="info-title" for="exampleInputEmail1">Taux de promotion<span>*</span></label>
+        {{ form_widget(form.tauxPromotion, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div>
+        <label class="info-title" for="exampleInputEmail1">Type de promotion<span>*</span></label>
+        {{ form_widget(form.typePromotion, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div>
+        <label class="info-title" for="exampleInputEmail1">Date debut de promotion<span>*</span></label>
+        {{ form_widget(form.dateDebut) }}
+    </div>
+
+    <div>
+        <label class="info-title" for="exampleInputEmail1">Date fin de promotion<span>*</span></label>
+        {{ form_widget(form.dateFin) }}
+    </div>
+
+    <div>
+        <input type="submit" value="Create" class="btn btn-success" />
+    </div>
+
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('promotion_index') }}" class="btn btn-default">Back to the list</a>
+        </li>
+    </ul>
+    </div>
+</div><!-- mainpanel -->
+    {% endblock %}
+
+{% endblock %}
+<script type="text/javascript">
+    $( "#promotion" ).toggleClass( "nav-parent active" )
+</script>
+{% include 'AdminFooter.html.twig' %}

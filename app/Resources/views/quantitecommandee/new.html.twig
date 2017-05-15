@@ -1,0 +1,50 @@
+{% include 'AdminHeader.html.twig' %}
+
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+    <h1>Quantitecommandee creation</h1>
+
+    {{ form_start(form) }}
+                <div class="form-group">
+                    <label class="info-title" for="exampleInputEmail1">Quantite commandee<span>*</span></label>
+                    {{ form_widget(form.quantite_c, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label class="info-title" for="exampleInputEmail1">Produit<span>*</span></label>
+                    {{ form_widget(form.produit_id, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <label class="info-title" for="exampleInputEmail1">Promotion<span>*</span></label>
+                    {{ form_widget(form.promotion_id, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    <label class="info-title" for="exampleInputEmail1">Commande<span>*</span></label>
+                    {{ form_widget(form.boncommandeId, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success"/>
+                </div>
+
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('quantitecommandee_index') }}" class="btn btn-default">Back to the list</a>
+        </li>
+    </ul>
+    </div>
+    </div><!-- mainpanel -->
+{% endblock %}
+
+{% endblock %}
+<script type="text/javascript">
+    $( "#commande" ).toggleClass( "nav-parent active" )
+</script>
+{% include 'AdminFooter.html.twig' %}

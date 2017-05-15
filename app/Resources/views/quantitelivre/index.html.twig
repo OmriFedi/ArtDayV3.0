@@ -1,0 +1,71 @@
+{% include 'AdminHeader.html.twig' %}
+<style>
+    ul
+    {
+        list-style-type: none;
+    }
+
+</style>
+{% block body %}
+    {% block mainPanel %}
+
+        <div class="mainpanel">
+
+            <div class="contentpanel">
+    <h1>Quantitelivres list</h1>
+<div class="table-responsive">
+    <table id="example" class="table table-bordered nomargin">
+        <thead>
+            <tr>
+                 <th>Quantite_l</th>
+                <th>BonLivraison</th>
+                <th>QuantiteCommandee</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quantiteLivre in quantiteLivres %}
+            <tr>
+                 <td>{{ quantiteLivre.quantitel }}</td>
+                <td>{{ quantiteLivre.bonlivraisonId }}</td>
+                <td>{{ quantiteLivre.quantitecommandeeId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('quantitelivre_show', { 'id': quantiteLivre.id }) }}"><i class="fa fa-trash"></i> Supprimer</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('quantitelivre_edit', { 'id': quantiteLivre.id }) }}"><i class="fa fa-pencil"></i> Editer</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('quantitelivre_goToLivraison', { 'id': quantiteLivre.id }) }}"><i class="fa fa-truck" aria-hidden="true"></i>Livraison</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('quantitelivre_new') }}" class="btn btn-success">Create a new quantiteLivre</a>
+        </li>
+    </ul>
+    </div>
+    </div><!-- mainpanel -->
+{% endblock %}
+
+{% endblock %}
+{% include 'AdminFooter.html.twig' %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>
+<script type="text/javascript">
+    $( "#livraison" ).toggleClass( "nav-parent active" )
+</script>

@@ -1,0 +1,55 @@
+{% include 'AdminHeader.html.twig' %}
+
+
+<div class="mainpanel">
+
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="index.html"><i class="fa fa-home mr5"></i>Admin</a></li>
+            <li><a href="basic-tables.html">Gestion de commentaires</a></li>
+
+        </ol>
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Gestion de commentaires </h4>
+
+
+
+            </div>
+
+            <div class="panel-body">
+
+            <form method="POST" Action="{{ path('repondre') }}">
+                <input type="hidden" name="id" value="{{ id }}" >
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label class="info-title" for="exampleInputComments">Réponse <span>*</span></label>
+
+                        <textarea class="form-control unicase-form-control text-input" name="d"></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12 outer-bottom-small m-t-20">
+
+                    <input type="submit" class="btn-upper btn btn-primary checkout-page-button">
+
+                </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% include '::AdminFooter.html.twig' %}

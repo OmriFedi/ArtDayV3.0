@@ -1,0 +1,166 @@
+{% include '::AdminHeader.html.twig' %}
+<div class="mainpanel">
+
+    <div class="contentpanel">
+
+        <ol class="breadcrumb breadcrumb-quirk">
+            <li><a href="index.html"><i class="fa fa-home mr5"></i> Home</a></li>
+            <li><a href="basic-tables.html">Gestion Commandes</a></li>
+            <li class="active">Liste Commande</li>
+        </ol>
+<div class="panel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Basic Styling</h4>
+        <p>For basic styling add the base class <code>.table</code> to any table.</p>
+
+    </div>
+
+<div class="panel-body">
+    <div class="table-responsive">
+        <table class="table nomargin">
+            <thead>
+            <tr>
+                <th class="text-center">
+                    <label class="ckbox ckbox-primary">
+                        <input type="checkbox"><span></span>
+                    </label>
+                </th>
+                <th>ID_Commande</th>
+                <th>ID_User</th>
+
+                <th class="text-center">Total</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for commande in commande %}
+
+
+
+   {% if(commande.archive  == null) %}
+
+            {% if(commande.valide == null) %}
+            <tr style="background: mistyrose">
+                <td class="text-center">
+                    <label class="ckbox ckbox-primary">
+                        <input type="checkbox"><span></span>
+                    </label>
+                </td>
+                <td>{{ commande.id }}</td>
+                <td>    <a class="" data-toggle="modal" data-target="#myModal{{ commande.id }}">
+                        Voir Client
+                    </a></td>
+
+                <td class="text-center">{{ commande.total }}</td>
+
+
+                <td>
+                <a href="{{ path('commande',{'id': commande.id}) }}" target="_blank" class="btn btn-primary">Afficher</a></td>
+                <td><a href="{{ path('valider',{'id': commande.id}) }}" class="btn btn-primary">Valider</a>
+                </td>
+
+
+            </tr>
+            {% else %}
+                <tr style="background: greenyellow">
+                    <td class="text-center">
+                        <label class="ckbox ckbox-primary">
+                            <input type="checkbox"><span></span>
+                        </label>
+                    </td>
+                    <td>{{ commande.id }}</td>
+                    <td> <a class="" data-toggle="modal" data-target="#myModal{{ commande.id }}">
+                            Voir CLient
+                        </a></td>
+
+                    <td class="text-center">{{ commande.total }}</td>
+
+
+                    <td>
+                        <a href="{{ path('commande',{'id': commande.id}) }}" target="_blank" class="btn btn-primary">Afficher</a></td>
+                    <td><a href="{{ path('archiver',{'id': commande.id}) }}" class="btn btn-primary">Archiver</a>
+                    </td>
+
+
+                </tr>
+{% endif %}
+            {% endif %}
+
+
+                <div class="modal bounceIn animated" id="myModal{{ commande.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Informations Clients </h4>
+                            </div>
+                            <form method="POST" Action="add_categorie">
+                                <div class="modal-body">
+
+                                    <div class="col-sm-12">
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="modal-footer">
+
+                                                    <h1><strong> Informations </strong>  </h1>
+{% for user in user %}
+{% if commande.getUserId() ==user.id %}
+    <h1><strong>ID : </strong>  {{ user.id }} </h1>
+ <h1><strong>NOM : </strong>  {{ user.username }} </h1>
+    <h1><strong>Email : </strong>  {{ user.email }} </h1>
+{% endif %}
+
+
+                                                    {% endfor %}
+
+
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div><!-- panel -->
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div><!-- col-sm-6 -->
+
+                                </div>
+                                <div class="modal-footer">
+
+
+
+                                </div>
+                            </form>
+                        </div><!-- modal-content -->
+                    </div><!-- modal-dialog -->
+                </div><!-- modal -->
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div><!-- table-responsive -->
+</div>
+</div><!-- panel -->
+
+
+
+
+
+
+
+{% include '::AdminFooter.html.twig' %}

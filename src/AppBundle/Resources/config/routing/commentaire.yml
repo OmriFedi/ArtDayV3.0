@@ -1,0 +1,23 @@
+gestion_commentaire:
+    path:     /ad/gestion_commentaire
+    defaults: { _controller: AppBundle:Commentaire:gestion_commentaire }
+add_commentaire:
+    path:     /add_commentaire
+    defaults: { _controller: AppBundle:Commentaire:add_commentaire }
+product:
+    path:     /product
+    defaults: { _controller: AppBundle:Commentaire:product }
+valider:
+    path:     /valider/{id}
+    defaults: { _controller: AppBundle:Commentaire:valider }
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: AppBundle:Commentaire:supprimer }
+
+page_repondre:
+    path:     /page_repondre/{id}
+    defaults: { _controller: AppBundle:Commentaire:page_repondre }
+
+repondre:
+    path:     /repondre
+    defaults: { _controller: AppBundle:Commentaire:repondre }
